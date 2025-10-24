@@ -39,5 +39,10 @@ cd PDFMergerCLI
 MinGW-w64 or MSYS2
 ```
 - Linux:
-```sudo apt install g++ cmake libpodofo-dev```
-- MacOS: ```brew install gcc cmake podofo```
+```
+sudo apt install g++ cmake libpodofo-dev
+```
+- MacOS:
+```
+brew install gcc cmake podofo
+```
