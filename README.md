@@ -12,7 +12,7 @@ A simple **command-line application** to merge multiple PDF files into a single 
 - 🔤 Sorts PDF files alphabetically  
 - 📑 Merges PDFs into a single output file  
 - 💻 Minimal, lightweight command-line interface  
-- 🌍 Cross-platform (Windows, Linux, macOS with minor adjustments)  
+- 🌍 Cross-platform (Windows, Linux, MacOS with minor adjustments)  
 
 ---
 
