@@ -46,3 +46,25 @@ sudo apt install g++ cmake libpodofo-dev
 ```
 brew install gcc cmake podofo
 ```
+
+---
+
+## 🏗️ Build Instructions
+
+1. Create a build directory and navigate into it:
+```
+mkdir build
+cd build
+```
+2. Configure the project with CMake:
+```
+cmake ..
+```
+3. Build the executable:
+```
+cmake --build .
+```
+The executable (pdfmerge on Linux/macOS or pdfmerge.exe on Windows) will be created inside the build folder. ⚡
+
+---
+
