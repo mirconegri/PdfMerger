@@ -68,3 +68,59 @@ The executable (pdfmerge on Linux/macOS or pdfmerge.exe on Windows) will be crea
 
 ---
 
+## 🚀 Usage
+
+Place the executable in the folder containing the PDF files you want to merge.
+Run the program:
+```./pdfmerge```   # Linux/macOS
+```pdfmerge.exe``` # Windows
+
+The program will:
+📂 Detect all PDF files in the folder
+🔤 Sort them alphabetically
+📝 Ask only for the name of the merged output file
+
+Example:
+
+📂 Found 3 PDF files:
+   chapter1.pdf
+   chapter2.pdf
+   appendix.pdf
+
+📝 Enter the name for the merged file (press Enter for 'merged.pdf'):
+> complete_book
+
+✅ Merge completed successfully! (complete_book.pdf)
+
+🗂️ Project Structure
+PDFMergerCLI/
+├── include/
+│   └── PdfMerger.h       # Header file for PDF merging logic
+├── src/
+│   ├── main.cpp          # Main program entry
+│   └── PdfMerger.cpp     # Implementation of PDF merging
+├── CMakeLists.txt        # CMake build configuration
+├── README.md             # Project documentation
+├── LICENSE               # MIT License file
+└── .gitignore            # Ignored files for Git
+
+🤝 Contributing
+
+Contributions are welcome! 🎉
+
+Fork the repo 🍴
+
+Create a new branch: git checkout -b feature/YourFeature 🌿
+
+Make your changes and commit: git commit -m 'Add new feature' ✍️
+
+Push to the branch: git push origin feature 🚀
+
+Open a Pull Request 🔄
+
+Please follow code style conventions and write descriptive commit messages. ✅
+
+📄 License
+
+This project is licensed under the MIT License. See LICENSE
+ for details. ⚖️
