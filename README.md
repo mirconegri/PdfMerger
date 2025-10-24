@@ -22,8 +22,6 @@ A simple **command-line application** to merge multiple PDF files into a single 
 - 🛠️ **CMake** (version ≥ 3.10)  
 - 📚 **PoDoFo library** installed for PDF manipulation ([PoDoFo official site](https://podofo.sourceforge.io/))  
 
-> 💡 On Windows, it is recommended to install **MinGW-w64** or **MSYS2** for `g++` and build tools.
-
 ---
 
 ## 🛠️ Installation
