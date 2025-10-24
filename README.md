@@ -33,11 +33,7 @@ git clone https://github.com/<your-username>/PDFMergerCLI.git
 cd PDFMergerCLI
 ```
 2. Ensure PoDoFo is installed on your system.
-
 3. Install C++ compiler:
-
-- Windows: MinGW-w64 or MSYS2
-
-- Linux: sudo apt install g++ cmake libpodofo-dev
-
-- MacOS: brew install gcc cmake podofo
+- Windows: ```MinGW-w64 or MSYS2```
+- Linux: ```sudo apt install g++ cmake libpodofo-dev```
+- MacOS: ```brew install gcc cmake podofo```
