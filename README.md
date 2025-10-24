@@ -6,20 +6,6 @@ A simple **command-line application** to merge multiple PDF files into a single 
 
 ---
 
-## 📋 Table of Contents
-
-1. [Features](#features)  
-2. [Requirements](#requirements)  
-3. [Installation](#installation)  
-4. [Build Instructions](#build-instructions)  
-5. [Usage](#usage)  
-6. [Project Structure](#project-structure)  
-7. [Contributing](#contributing)  
-8. [License](#license)  
-9. [Acknowledgements](#acknowledgements)  
-
----
-
 ## ✨ Features
 
 - 📂 Automatically detects all PDF files in the same folder as the executable  
