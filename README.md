@@ -73,7 +73,7 @@ The executable (pdfmerge on Linux/macOS or pdfmerge.exe on Windows) will be crea
 Place the executable in the folder containing the PDF files you want to merge.
 Run the program:
 
-```./pdfmerge```   ==> Linux/macOS
+```./pdfmerge``` \t ==> Linux/macOS
 
 ```pdfmerge.exe``` ==> Windows
 
