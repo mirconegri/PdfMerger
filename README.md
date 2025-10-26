@@ -96,5 +96,5 @@ Example:
 
 ## 📄 License
 
-This project is licensed under the MIT License. See LICENSE
+This project is licensed under the MIT License. See ![LICENSE](https://github.com/mirconegri/PdfMerger/main/LICENSE)
  for details. ⚖️
