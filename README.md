@@ -29,8 +29,8 @@ A simple **command-line application** to merge multiple PDF files into a single 
 1. Clone the repository:
 
 ```
-git clone https://github.com/<your-username>/PDFMergerCLI.git
-cd PDFMergerCLI
+git clone https://github.com/mirconegri/PdfMerger.git
+cd PDFMerger
 ```
 2. Ensure PoDoFo is installed on your system.
 3. Install C++ compiler:
