@@ -94,7 +94,16 @@ Example:
 
 ✅ Merge completed successfully! (complete_book.pdf)
 
-## 📄 License
+---
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE)
- for details. ⚖️
+## 📜 License
+
+MIT License © 2025 Mirco Negri
+— see [LICENSE](LICENSE) file for details.
+
+---
+
+## 👤 Author
+
+`Mirco Negri`
+GitHub: https://github.com/mirconegri
