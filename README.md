@@ -1,4 +1,4 @@
-# PDF Merger CLI - C++ 📝📚
+# PDF Merger - C++ 📝📚
 
 ![PDF Merge](https://img.shields.io/badge/Language-C++-blue?style=for-the-badge) ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
