@@ -15,7 +15,7 @@ void PdfMerger::addFile(const string& path) {
 
 void PdfMerger::merge(const string& outputPath) {
     if (inputFiles.empty()) {
-        cerr << "⚠️ No PDF files to merge.\n";
+        cerr << "⚠️ No PDF files to merge.!!\n";
         return;
     }
 
