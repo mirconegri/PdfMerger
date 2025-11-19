@@ -8,9 +8,9 @@ A simple **command-line application** to merge multiple PDF files into a single 
 
 ## ✨ Features
 
-- 📂 Automatically detects all PDF files in the same folder as the executable  
-- 🔤 Sorts PDF files alphabetically  
-- 📑 Merges PDFs into a single output file  
+- 📂 Automatically `detects` all PDF files in the same folder as the executable  
+- 🔤 `Sorts` PDF files alphabetically  
+- 📑 `Merges` PDFs into a single output file  
 - 💻 Minimal, lightweight command-line interface  
 - 🌍 Cross-platform (Windows, Linux, MacOS with minor adjustments)  
 
