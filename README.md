@@ -85,9 +85,9 @@ The program will:
 Example:
 
 📂 Found 3 PDF files:
-   - chapter1.pdf
-   - chapter2.pdf
-   - appendix.pdf
+   - `chapter1.pdf`
+   - `chapter2.pdf`
+   - `appendix.pdf`
 
 📝 Enter the name for the merged file (press Enter for 'merged.pdf'):
 > complete_book
