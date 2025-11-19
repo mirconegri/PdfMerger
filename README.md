@@ -80,7 +80,7 @@ Run the program:
 The program will:
 📂 Detect all PDF files in the folder
 🔤 Sort them alphabetically
-📝 Ask only for the name of the merged output file
+📝 Ask only for the name of the `merged` output file
 
 Example:
 
@@ -92,13 +92,13 @@ Example:
 📝 Enter the name for the merged file (press Enter for 'merged.pdf'):
 > complete_book
 
-✅ Merge completed successfully! (complete_book.pdf)
+✅ Merge completed successfully! `(complete_book.pdf)`
 
 ---
 
 ## 📜 License
 
-MIT License © 2025 Mirco Negri
+MIT License © 2025 `Mirco Negri`
 — see [LICENSE](LICENSE) file for details.
 
 ---
