@@ -83,7 +83,6 @@ The program will:
 📝 Ask only for the name of the `merged` output file
 
 Example:
-
 📂 Found 3 PDF files:
    - `chapter1.pdf`
    - `chapter2.pdf`
