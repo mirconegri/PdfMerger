@@ -1,110 +1,117 @@
-# PDF Merger - C++ 📝📚
+File Merger - C++ 🗂️
 
+ 
 
-[![PDF Merge](https://img.shields.io/badge/Language-C++-red?style=for-the-badge)](https://cplusplus.com/) [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE) 
+A simple command-line application to merge multiple files into a single output file. The program processes all regular files located in the same folder as the executable, lets the user choose the merge order and direction, and produces a deterministic merged result. ✅
 
-A simple **command-line application** to merge multiple PDF files into a single PDF file. The program automatically detects all PDF files in the same folder as the executable, sorts them alphabetically, and merges them. The user only needs to provide the name for the output file. ✅
 
 ---
 
-## ✨ Features
+✨ Features
 
-- 📂 Automatically `detects` all PDF files in the same folder as the executable  
-- 🔤 `Sorts` PDF files alphabetically  
-- 📑 `Merges` PDFs into a single output file  
-- 💻 Minimal, lightweight command-line interface  
-- 🌍 Cross-platform (Windows, Linux, MacOS with minor adjustments)  
+📂 Automatically detects all regular files in the executable folder
+
+🔀 User-defined merge order:
+
+🔤 File name
+
+🕒 Last modification date
+
+📏 File size
+
+
+↕️ Ascending or descending order selection
+
+📄 Merges file contents into a single output file
+
+💻 Minimal, lightweight command-line interface
+
+🌍 Cross-platform (Windows, Linux, macOS)
+
+
 
 ---
 
-## ⚙️ Requirements
+⚙️ Requirements
 
-- 🖥️ **C++17 compatible compiler** (e.g., `g++` via MinGW-w64 on Windows, `g++`/`clang` on Linux/macOS)  
-- 🛠️ **CMake** (version ≥ 3.10)  
-- 📚 **PoDoFo library** installed for PDF manipulation ([PoDoFo official site](https://podofo.sourceforge.io/))  
+🖥️ C++17 compatible compiler (g++, clang, or MSVC)
+
+📚 Uses only the C++17 standard library (<filesystem>, <fstream>, <algorithm>)
+
+
+No external libraries are required.
+
 
 ---
 
-## 🛠️ Installation
+🛠️ Installation
 
 1. Clone the repository:
 
-```
-git clone https://github.com/mirconegri/PdfMerger.git
-cd PDFMerger
-```
-2. Ensure PoDoFo is installed on your system.
-3. Install C++ compiler:
-- Windows:
-```
-MinGW-w64 or MSYS2
-```
-- Linux:
-```
-sudo apt install g++ cmake libpodofo-dev
-```
-- MacOS:
-```
-brew install gcc cmake podofo
-```
+
+
+git clone https://github.com/mirconegri/FileMerger.git
+cd FileMerger
+
+2. Ensure a C++17 compiler is installed on your system.
+
+
 
 ---
 
 ## 🏗️ Build Instructions
 
-1. Create a build directory and navigate into it:
-```
-mkdir build
-cd build
-```
-2. Configure the project with CMake:
-```
-cmake ..
-```
-3. Build the executable:
-```
-cmake --build .
-```
-The executable (pdfmerge on Linux/macOS or pdfmerge.exe on Windows) will be created inside the build folder. ⚡
+### Linux / macOS
+
+g++ -std=c++17 FileMerger.cpp -o FileMerger
+
+### Windows (MinGW)
+
+g++ -std=c++17 FileMerger.cpp -o FileMerger.exe
+
+### Windows (Visual Studio)
+
+cl /std:c++17 FileMerger.cpp
+
+The executable will be generated in the current directory. ⚡
 
 ---
 
 ## 🚀 Usage
 
-How to Use
-
 1. Place the executable in the folder containing the files you want to merge.
-
 
 2. Run the program:
 
-```./FileMerger```
+./FileMerger
 
 3. Choose the merge order when prompted:
 
-- By file name
-- By last modification date
+- By file name  
+- By last modification date  
 - By file size
 
 4. Choose the sort direction:
 
-- Ascending
+- Ascending  
 - Descending
 
 5. The merged result will be saved as:
-`merged_output.txt`
 
+merged_output.txt
+
+in the same directory. ✅
 
 ---
 
 ## 📜 License
 
-MIT License © 2025 `Mirco Negri`
+MIT License © 2025 `Mirco Negri`  
 — see [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 👤 Author
 
-`Mirco Negri`
+`Mirco Negri`  
 GitHub: https://github.com/mirconegri
