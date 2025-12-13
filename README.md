@@ -7,7 +7,9 @@ A simple command-line application to merge multiple files into a single output f
 
 ---
 
-✨ Features
+
+## ✨ Features
+
 
 📂 Automatically detects all regular files in the executable folder
 
@@ -32,30 +34,27 @@ A simple command-line application to merge multiple files into a single output f
 
 ---
 
-⚙️ Requirements
 
-🖥️ C++17 compatible compiler (g++, clang, or MSVC)
+## ⚙️ Requirements
 
-📚 Uses only the C++17 standard library (<filesystem>, <fstream>, <algorithm>)
+- 🖥️ C++17 compatible compiler (g++, clang, or MSVC)
 
+- 📚 Uses only the C++17 standard library (<filesystem>, <fstream>, <algorithm>)
 
-No external libraries are required.
+- No external libraries are required.
 
 
 ---
 
-🛠️ Installation
+
+## 🛠️ Installation
 
 1. Clone the repository:
-
-
 
 git clone https://github.com/mirconegri/FileMerger.git
 cd FileMerger
 
 2. Ensure a C++17 compiler is installed on your system.
-
-
 
 ---
 
