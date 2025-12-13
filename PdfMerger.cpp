@@ -1,7 +1,4 @@
-#include "PdfMerger.h"
-#include <iostream>
-#include 
-
+#
 using namespace PoDoFo;
 using namespace std;
 
