@@ -82,7 +82,7 @@ The executable will be generated in the current directory. ⚡
 
 2. Run the program:
 
-./FileMerger
+`./FileMerger`
 
 3. Choose the merge order when prompted:
 
@@ -97,7 +97,7 @@ The executable will be generated in the current directory. ⚡
 
 5. The merged result will be saved as:
 
-merged_output.txt
+`merged_output.txt`
 
 in the same directory. ✅
 
