@@ -22,7 +22,7 @@ void PdfMerger::merge(const string& outputPath) {
     if (inputFiles.empty()) {
         cerr << "⚠️ No PDF files to merge.!!\n";
         return;
-    }
+    
 
     try {
         // Create an empty PDF document that will contain the merged result.
