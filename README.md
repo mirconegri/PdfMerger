@@ -102,8 +102,7 @@ The executable will be generated in the current directory. ⚡
 
 ## 📜 License
 
-MIT License © 2025 `Mirco Negri`  
-— see [LICENSE](LICENSE) file for details.
+MIT License © 2025 `Mirco Negri` — see [LICENSE](LICENSE) file for details.
 
 ---
 
