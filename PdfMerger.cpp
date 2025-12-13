@@ -8,7 +8,7 @@ using namespace std;
 void PdfMerger::addFile(const string& path) {
     // Check whether the given 
     try {
-        // Create an empty PDF document that will contain the merged result.
+        // Create an empty PDF 
         PdfMemDocument outputDoc;
 
         // Loop through each input file.
