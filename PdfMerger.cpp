@@ -20,9 +20,7 @@ void PdfMerger::merge(const string& outputPath) {
         PdfMemDocument outputDoc;
 
         // Loop through each input file.
-        for (const auto& file : inputFiles) {
-            // Print which file is currently being added.
-            cout << "📄 Adding: " << std::filesystem::path(file).filename().string() << endl;
+        for (const auto& file :  std::filesystem::path(file).filename().string() << endl;
 
             // Load the current input PDF file into memory.
             PdfMemDocument inputDoc(file.c_str());
