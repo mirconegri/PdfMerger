@@ -11,15 +11,15 @@ A simple command-line application to merge multiple files into a single output f
 ## ✨ Features
 
 
-📂 Automatically detects all regular files in the executable folder
+- 📂 Automatically detects all regular files in the executable folder
 
-🔀 User-defined merge order:
+- 🔀 User-defined merge order:
 
-🔤 File name
+- 🔤 File name
 
-🕒 Last modification date
+- 🕒 Last modification date
 
-📏 File size
+- 📏 File size
 
 
 ↕️ Ascending or descending order selection
