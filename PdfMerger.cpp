@@ -18,8 +18,7 @@ void PdfMerger::addFile(const string& path) {
         // Loop through each input file.
         for (const auto& file :  std::filesystem::path(file).filename().string() << endl;
 
-            // Load the current input PDF file into memory.
-            PdfMemDocument inputDoc(file.c_str());
+            // Load the current (file.c_str());
 
             // Append all pages of the input PDF into the output document.
             outputDoc.Append(inputDoc);
