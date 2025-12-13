@@ -94,28 +94,6 @@ How to Use
 5. The merged result will be saved as:
 `merged_output.txt`
 
-Place the executable in the folder containing the PDF files you want to merge.
-Run the program:
-
-```./pdfmerge``` ==> Linux/macOS
-
-```pdfmerge.exe``` ==> Windows
-
-The program will:
-📂 Detect all PDF files in the folder
-🔤 Sort them alphabetically
-📝 Ask only for the name of the `merged` output file
-
-Example:
-📂 Found 3 PDF files:
-   - `chapter1.pdf`
-   - `chapter2.pdf`
-   - `appendix.pdf`
-
-📝 Enter the name for the merged file (press Enter for 'merged.pdf'):
-> complete_book
-
-✅ Merge completed successfully! `(complete_book.pdf)`
 
 ---
 
