@@ -16,9 +16,7 @@ void PdfMerger::addFile(const string& path) {
         PdfMemDocument outputDoc;
 
         // Loop through each input file.
-        for (const auto& file :  std::filesystem::path(file).filename
-            outputDoc.Append(inputDoc);
-        }
+        for (const auto& file :  
 
         // Write the final merged PDF to the specified output path.
         outputDoc.Write(outputPath.c_str());
