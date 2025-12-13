@@ -96,11 +96,7 @@ The executable will be generated in the current directory. ⚡
 - Ascending  
 - Descending
 
-5. The merged result will be saved as:
-
-`merged_output.txt`
-
-in the same directory. ✅
+5. The merged result will be saved as: `merged_output.txt` in the same directory. ✅
 
 ---
 
