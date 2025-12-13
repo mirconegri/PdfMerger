@@ -82,14 +82,14 @@ How to Use
 
 3. Choose the merge order when prompted:
 
-1 - By file name
-2 - By last modification date
-3 - By file size
+- By file name
+- By last modification date
+- By file size
 
 4. Choose the sort direction:
 
-1 - Ascending
-2 - Descending
+- Ascending
+- Descending
 
 5. The merged result will be saved as:
 `merged_output.txt`
