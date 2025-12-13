@@ -7,11 +7,7 @@ using namespace std;
 
 void PdfMerger::addFile(const string& path) {
     // Check whether the given file path exists on the filesystem.
-    // If it doesn't, print an error and 
-void PdfMerger::merge(const string& outputPath) {
-    // If no input files were added, warn the user and abort the merge.
-    if (inputFiles.empty()) {
-        cerr << "⚠️ No PDF files to merge.!!\n";
+    // If it doesn't, print an error ";
         return;
     
 
