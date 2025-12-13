@@ -71,6 +71,29 @@ The executable (pdfmerge on Linux/macOS or pdfmerge.exe on Windows) will be crea
 
 ## 🚀 Usage
 
+How to Use
+
+1. Place the executable in the folder containing the files you want to merge.
+
+
+2. Run the program:
+
+```./FileMerger```
+
+3. Choose the merge order when prompted:
+
+1 - By file name
+2 - By last modification date
+3 - By file size
+
+4. Choose the sort direction:
+
+1 - Ascending
+2 - Descending
+
+5. The merged result will be saved as:
+`merged_output.txt`
+
 Place the executable in the folder containing the PDF files you want to merge.
 Run the program:
 
