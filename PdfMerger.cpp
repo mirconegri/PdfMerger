@@ -1,142 +1,117 @@
-// FileMerger.cpp
-// Merges all regular files in the same folder as the executable into one file.
-// Improvements:
-// - Clear handling of sort order (ascending / descending)
-// - Explicit note: date = last modification time (portable)
-// - Cross-platform executable exclusion
-// - Safer input validation
-// - Deterministic behavior
-// Compatible with C++17
+File Merger - C++ 🗂️
 
-#include <iostream>
-#include <fstream>
-#include <filesystem>
-#include <vector>
-#include <algorithm>
-#include <string>
+ 
 
-namespace fs = std::filesystem;
+A simple command-line application to merge multiple files into a single output file. The program processes all regular files located in the same folder as the executable, lets the user choose the merge order and direction, and produces a deterministic merged result. ✅
 
-enum class OrderType {
-    NAME = 1,
-    DATE = 2,
-    SIZE = 3
-};
 
-int main() {
-    const std::string outputFileName = "merged_output.txt";
-    std::vector<fs::directory_entry> files;
+---
 
-    int orderChoice;
-    int directionChoice;
+✨ Features
 
-    std::cout << "Choose merge order:\n";
-    std::cout << "1 - By file name\n";
-    std::cout << "2 - By last modification date\n";
-    std::cout << "3 - By file size\n";
-    std::cout << "Selection: ";
-    std::cin >> orderChoice;
+📂 Automatically detects all regular files in the executable folder
 
-    if (orderChoice < 1 || orderChoice > 3) {
-        std::cerr << "Invalid order selection.\n";
-        return 1;
-    }
+🔀 User-defined merge order:
 
-    std::cout << "\nChoose sort direction:\n";
-    std::cout << "1 - Ascending\n";
-    std::cout << "2 - Descending\n";
-    std::cout << "Selection: ";
-    std::cin >> directionChoice;
+🔤 File name
 
-    if (directionChoice < 1 || directionChoice > 2) {
-        std::cerr << "Invalid direction selection.\n";
-        return 1;
-    }
+🕒 Last modification date
 
-    bool ascending = (directionChoice == 1);
-    OrderType order = static_cast<OrderType>(orderChoice);
+📏 File size
 
-    fs::path currentDir = fs::current_path();
-    fs::path executablePath = fs::canonical(fs::path("./"));
 
-    for (const auto& entry : fs::directory_iterator(currentDir)) {
-        if (!entry.is_regular_file()) {
-            continue;
-        }
+↕️ Ascending or descending order selection
 
-        fs::path filePath = entry.path();
-        std::string fileName = filePath.filename().string();
+📄 Merges file contents into a single output file
 
-        if (fileName == outputFileName) {
-            continue;
-        }
+💻 Minimal, lightweight command-line interface
 
-#ifdef _WIN32
-        if (filePath.extension() == ".exe") {
-            continue;
-        }
-#else
-        if ((fs::status(filePath).permissions() & fs::perms::owner_exec) != fs::perms::none) {
-            continue;
-        }
-#endif
+🌍 Cross-platform (Windows, Linux, macOS)
 
-        files.push_back(entry);
-    }
 
-    auto comparator = [&](const fs::directory_entry& a,
-                          const fs::directory_entry& b) {
-        bool result = false;
 
-        switch (order) {
-            case OrderType::NAME:
-                result = a.path().filename().string() <
-                         b.path().filename().string();
-                break;
+---
 
-            case OrderType::DATE:
-                // Uses last modification time (portable across platforms)
-                result = fs::last_write_time(a) <
-                         fs::last_write_time(b);
-                break;
+⚙️ Requirements
 
-            case OrderType::SIZE:
-                result = fs::file_size(a) <
-                         fs::file_size(b);
-                break;
-        }
+🖥️ C++17 compatible compiler (g++, clang, or MSVC)
 
-        return ascending ? result : !result;
-    };
+📚 Uses only the C++17 standard library (<filesystem>, <fstream>, <algorithm>)
 
-    std::sort(files.begin(), files.end(), comparator);
 
-    std::ofstream outputFile(outputFileName, std::ios::binary);
-    if (!outputFile) {
-        std::cerr << "Error: cannot create output file.\n";
-        return 1;
-    }
+No external libraries are required.
 
-    for (const auto& entry : files) {
-        fs::path filePath = entry.path();
-        std::string fileName = filePath.filename().string();
 
-        std::ifstream inputFile(filePath, std::ios::binary);
-        if (!inputFile) {
-            std::cerr << "Warning: cannot open file " << fileName << "\n";
-            continue;
-        }
+---
 
-        outputFile << "\n\n===== BEGIN FILE: " << fileName << " =====\n\n";
-        outputFile << inputFile.rdbuf();
-        outputFile << "\n\n===== END FILE: " << fileName << " =====\n";
+🛠️ Installation
 
-        inputFile.close();
-    }
+1. Clone the repository:
 
-    outputFile.close();
 
-    std::cout << "\nFiles successfully merged into "
-              << outputFileName << "\n";
-    return 0;
-}
+
+git clone https://github.com/mirconegri/FileMerger.git
+cd FileMerger
+
+2. Ensure a C++17 compiler is installed on your system.
+
+
+
+---
+
+## 🏗️ Build Instructions
+
+### Linux / macOS
+
+g++ -std=c++17 FileMerger.cpp -o FileMerger
+
+### Windows (MinGW)
+
+g++ -std=c++17 FileMerger.cpp -o FileMerger.exe
+
+### Windows (Visual Studio)
+
+cl /std:c++17 FileMerger.cpp
+
+The executable will be generated in the current directory. ⚡
+
+---
+
+## 🚀 Usage
+
+1. Place the executable in the folder containing the files you want to merge.
+
+2. Run the program:
+
+./FileMerger
+
+3. Choose the merge order when prompted:
+
+- By file name  
+- By last modification date  
+- By file size
+
+4. Choose the sort direction:
+
+- Ascending  
+- Descending
+
+5. The merged result will be saved as:
+
+merged_output.txt
+
+in the same directory. ✅
+
+---
+
+## 📜 License
+
+MIT License © 2025 `Mirco Negri`  
+— see [LICENSE](LICENSE) file for details.
+
+---
+
+## 👤 Author
+
+`Mirco Negri`  
+GitHub: https://github.com/mirconegri
