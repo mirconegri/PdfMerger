@@ -18,9 +18,4 @@ void PdfMerger::addFile(const string& path) {
         // Loop through each input file.
         for (const auto& file :  
 
-        // Write the final merged PDF to the specified output path.
-        outputDoc.Write(outputPath.c_str());
-        cout << "✅ Merge completed: " << outputPath << endl;
-
-    } catch (PdfError& e) {
-        // If PoDoFo 
+        // Write the final merged 
