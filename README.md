@@ -60,15 +60,15 @@ cd FileMerger
 
 ## 🏗️ Build Instructions
 
-### Linux / macOS
+- ### Linux / macOS
 
 g++ -std=c++17 FileMerger.cpp -o FileMerger
 
-### Windows (MinGW)
+- ### Windows (MinGW)
 
 g++ -std=c++17 FileMerger.cpp -o FileMerger.exe
 
-### Windows (Visual Studio)
+- ### Windows (Visual Studio)
 
 cl /std:c++17 FileMerger.cpp
 
