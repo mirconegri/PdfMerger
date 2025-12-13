@@ -25,7 +25,4 @@ void PdfMerger::addFile(const string& path) {
         cout << "✅ Merge completed: " << outputPath << endl;
 
     } catch (PdfError& e) {
-        // If PoDoFo throws an error, display the error code.
-        cerr << "PoDoFo error: " << e.GetError() << endl;
-    }
-}
+        // If PoDoFo 
