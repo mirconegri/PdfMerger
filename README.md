@@ -51,8 +51,10 @@ A simple command-line application to merge multiple files into a single output f
 
 1. Clone the repository:
 
+```
 git clone https://github.com/mirconegri/FileMerger.git
 cd FileMerger
+```
 
 2. Ensure a C++17 compiler is installed on your system.
 
@@ -61,17 +63,17 @@ cd FileMerger
 ## 🏗️ Build Instructions
 
 - ### Linux / macOS
-
+```
 g++ -std=c++17 FileMerger.cpp -o FileMerger
-
+```
 - ### Windows (MinGW)
-
+```
 g++ -std=c++17 FileMerger.cpp -o FileMerger.exe
-
+```
 - ### Windows (Visual Studio)
-
+```
 cl /std:c++17 FileMerger.cpp
-
+```
 The executable will be generated in the current directory. ⚡
 
 ---
