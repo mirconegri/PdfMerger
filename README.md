@@ -4,9 +4,7 @@
 
 A simple command-line application to merge multiple files into a single output file. The program processes all regular files located in the same folder as the executable, lets the user choose the merge order and direction, and produces a deterministic merged result. ✅
 
-
 ---
-
 
 ## ✨ Features
 
@@ -28,7 +26,6 @@ A simple command-line application to merge multiple files into a single output f
 - 💻 Minimal, lightweight command-line interface
 
 - 🌍 Cross-platform (Windows, Linux, macOS)
-
 
 
 ---
