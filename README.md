@@ -23,7 +23,7 @@ A simple command-line application to merge multiple files into a single output f
 
 - 📄 `Merges` file contents into a single output file
 
-- 💻 `Minimal`, lightweight command-line interface
+- 💻 Minimal, lightweight command-line interface
 
 - 🌍 Cross-platform (Windows, Linux, macOS)
 
