@@ -9,7 +9,7 @@ A simple command-line application to merge multiple files into a single output f
 ## ✨ Features
 
 
-- 📂 Automatically detects all regular files in the executable folder
+- 📂 Automatically `detects` all regular files in the executable folder
 
 - 🔀 User-defined merge order:
 
@@ -21,9 +21,9 @@ A simple command-line application to merge multiple files into a single output f
 
 - ↕️ Ascending or descending order selection
 
-- 📄 Merges file contents into a single output file
+- 📄 `Merges` file contents into a single output file
 
-- 💻 Minimal, lightweight command-line interface
+- 💻 `Minimal`, lightweight command-line interface
 
 - 🌍 Cross-platform (Windows, Linux, macOS)
 
