@@ -1,6 +1,6 @@
 # File Merger - C++ 🗂️
 
- 
+[![C++](https://img.shields.io/badge/Language-C%2B%2B-blue?style=for-the-badge)](https://isocpp.org/) [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)  
 
 A simple command-line application to merge multiple files into a single output file. The program processes all regular files located in the same folder as the executable, lets the user choose the merge order and direction, and produces a deterministic merged result. ✅
 
