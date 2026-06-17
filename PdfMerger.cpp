@@ -1,157 +1,153 @@
-// FileMerger.cpp
-// Merges all regular files in the same folder as the executable into one file.
-// Improvements:
-// - Clear handling of sort order (ascending / descending)
-// - Explicit note: date = last modification time (portable)
-// - Cross-platform executable exclusion
-// - Safer input validation
-// - Deterministic behavior
+// PdfMerger.cpp
+// Merges all PDF files found in the same folder as the executable into one PDF.
+// The user is first asked how to sort the files (by name or by modification date),
+// then whether the order should be ascending or descending.
+//
+// IMPORTANT: PDF files cannot be merged by simply gluing their bytes together
+// the way plain text files can. Each PDF stores its own internal cross-reference
+// table and trailer, so the actual merge is done with Ghostscript, a free
+// command-line tool that understands the PDF format. Ghostscript must be
+// installed and available on your PATH: https://ghostscript.com/releases/gsdnld.html
+//
 // Compatible with C++17
 
 #include <iostream>
-#include <fstream>
 #include <filesystem>
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <cstdlib>
+#include <cctype>
 
 namespace fs = std::filesystem;
 
-// Enum for different sorting options
+// The two ways the user can choose to sort the files
 enum class OrderType {
-    NAME = 1,   // Sort by file name
-    DATE = 2,   // Sort by last modification date
-    SIZE = 3    // Sort by file size
+    NAME = 1,  // Alphabetical order (numeric file names are compared as numbers)
+    DATE = 2   // Last modification date
 };
 
+// Returns true if a string is made up only of digits, e.g. "12"
+bool isNumericName(const std::string& name) {
+    if (name.empty()) {
+        return false;
+    }
+    for (char c : name) {
+        if (!isdigit(static_cast<unsigned char>(c))) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Returns true if the file has a ".pdf" extension (case insensitive)
+bool isPdfFile(const fs::path& filePath) {
+    std::string extension = filePath.extension().string();
+    for (char& c : extension) {
+        c = static_cast<char>(tolower(static_cast<unsigned char>(c)));
+    }
+    return extension == ".pdf";
+}
+
 int main() {
-    const std::string outputFileName = "merged_output.txt"; // Name of the merged output file
-    std::vector<fs::directory_entry> files; // Vector to store files to merge
+    const std::string outputFileName = "merged_output.pdf";
+    std::vector<fs::directory_entry> files;
 
-    int orderChoice;     // User choice for sorting order
-    int directionChoice; // User choice for ascending/descending
+    int orderChoice;
+    int directionChoice;
 
-    // Prompt user for sorting order
+    // Ask the user how to sort the files
     std::cout << "Choose merge order:\n";
-    std::cout << "1 - By file name\n";
-    std::cout << "2 - By last modification date\n";
-    std::cout << "3 - By file size\n";
+    std::cout << "1 - Alphabetical order (numeric names are sorted correctly too)\n";
+    std::cout << "2 - Last modification date\n";
     std::cout << "Selection: ";
     std::cin >> orderChoice;
 
-    // Validate user input for order
-    if (orderChoice < 1 || orderChoice > 3) {
+    if (orderChoice < 1 || orderChoice > 2) {
         std::cerr << "Invalid order selection.\n";
         return 1;
     }
 
-    // Prompt user for sorting direction
     std::cout << "\nChoose sort direction:\n";
     std::cout << "1 - Ascending\n";
     std::cout << "2 - Descending\n";
     std::cout << "Selection: ";
     std::cin >> directionChoice;
 
-    // Validate user input for direction
     if (directionChoice < 1 || directionChoice > 2) {
         std::cerr << "Invalid direction selection.\n";
         return 1;
     }
 
-    bool ascending = (directionChoice == 1); // true if ascending, false if descending
-    OrderType order = static_cast<OrderType>(orderChoice); // Convert input to enum
+    bool ascending = (directionChoice == 1);
+    OrderType order = static_cast<OrderType>(orderChoice);
 
-    fs::path currentDir = fs::current_path();      // Get current directory path
-    fs::path executablePath = fs::canonical(fs::path("./")); // Canonical path of executable
+    fs::path currentDir = fs::current_path();
 
-    // Iterate through files in the current directory
+    // Collect every PDF file in the current folder
     for (const auto& entry : fs::directory_iterator(currentDir)) {
         if (!entry.is_regular_file()) {
-            continue; // Skip directories and non-regular files
-        }
-
-        fs::path filePath = entry.path();
-        std::string fileName = filePath.filename().string();
-
-        // Skip the output file to avoid including itself
-        if (fileName == outputFileName) {
             continue;
         }
 
-#ifdef _WIN32
-        // Skip the executable file on Windows
-        if (filePath.extension() == ".exe") {
+        if (!isPdfFile(entry.path())) {
             continue;
         }
-#else
-        // Skip files with execute permission on Unix-based systems
-        if ((fs::status(filePath).permissions() & fs::perms::owner_exec) != fs::perms::none) {
-            continue;
-        }
-#endif
 
-        files.push_back(entry); // Add valid file to the list
+        // Skip a previously merged file so it doesn't get merged into itself
+        if (entry.path().filename().string() == outputFileName) {
+            continue;
+        }
+
+        files.push_back(entry);
     }
 
-    // Comparator lambda function for sorting based on user choice
-    auto comparator = [&](const fs::directory_entry& a,
-                          const fs::directory_entry& b) {
+    if (files.empty()) {
+        std::cout << "No PDF files found in this folder.\n";
+        return 0;
+    }
+
+    // Comparator used to sort the files
+    auto comparator = [&](const fs::directory_entry& a, const fs::directory_entry& b) {
         bool result = false;
 
-        switch (order) {
-            case OrderType::NAME:
-                result = a.path().filename().string() < b.path().filename().string();
-                break;
+        if (order == OrderType::NAME) {
+            std::string nameA = a.path().stem().string();
+            std::string nameB = b.path().stem().string();
 
-            case OrderType::DATE:
-                // Uses last modification time (portable across platforms)
-                result = fs::last_write_time(a) < fs::last_write_time(b);
-                break;
-
-            case OrderType::SIZE:
-                result = fs::file_size(a) < fs::file_size(b);
-                break;
+            if (isNumericName(nameA) && isNumericName(nameB)) {
+                result = std::stoi(nameA) < std::stoi(nameB);
+            } else {
+                result = nameA < nameB;
+            }
+        } else {
+            result = fs::last_write_time(a) < fs::last_write_time(b);
         }
 
-        // Apply ascending or descending order
         return ascending ? result : !result;
     };
 
-    // Sort the files according to the comparator
     std::sort(files.begin(), files.end(), comparator);
 
-    // Open output file in binary mode
-    std::ofstream outputFile(outputFileName, std::ios::binary);
-    if (!outputFile) {
-        std::cerr << "Error: cannot create output file.\n";
+    // Build the Ghostscript command that merges every PDF in the chosen order
+#ifdef _WIN32
+    std::string command = "gswin64c -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=" + outputFileName;
+#else
+    std::string command = "gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=" + outputFileName;
+#endif
+
+    for (const auto& entry : files) {
+        command += " \"" + entry.path().filename().string() + "\"";
+    }
+
+    std::cout << "\nMerging " << files.size() << " PDF file(s)...\n";
+    int exitCode = std::system(command.c_str());
+
+    if (exitCode != 0) {
+        std::cerr << "Merge failed. Make sure Ghostscript is installed and on your PATH.\n";
         return 1;
     }
 
-    // Merge file contents into the output file
-    for (const auto& entry : files) {
-        fs::path filePath = entry.path();
-        std::string fileName = filePath.filename().string();
-
-        std::ifstream inputFile(filePath, std::ios::binary); // Open input file in binary mode
-        if (!inputFile) {
-            std::cerr << "Warning: cannot open file " << fileName << "\n";
-            continue;
-        }
-
-        // Add header indicating the start of a file
-        outputFile << "\n\n===== BEGIN FILE: " << fileName << " =====\n\n";
-
-        // Write the contents of the file
-        outputFile << inputFile.rdbuf();
-
-        // Add footer indicating the end of a file
-        outputFile << "\n\n===== END FILE: " << fileName << " =====\n";
-
-        inputFile.close(); // Close input file
-    }
-
-    outputFile.close(); // Close output file
-
-    std::cout << "\nFiles successfully merged into " << outputFileName << "\n";
+    std::cout << "Files successfully merged into " << outputFileName << "\n";
     return 0;
 }
