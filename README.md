@@ -1,100 +1,133 @@
-# File Merger - C++ 🗂️
+# File Merger (PDF Edition)
 
-[![C++](https://img.shields.io/badge/Language-C%2B%2B-f34b7d?style=for-the-badge)](https://isocpp.org/) [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)  
+[
 
+![C++](https://img.shields.io/badge/Language-C%2B%2B17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
 
-A simple command-line application to merge multiple files into a single output file. The program processes all regular files located in the same folder as the executable, lets the user choose the merge order and direction, and produces a deterministic merged result. ✅
+](https://isocpp.org/)
+[
 
----
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-## ✨ Features
+](LICENSE)
 
+A command-line C++ tool that merges all PDF files found in its own folder into a single output PDF, with user-defined sort order (by name or by modification date) and direction (ascending or descending), powered by Ghostscript.
 
-- 📂 Automatically `detects` all regular files in the executable folder
+> **Note:** despite the repository name, this tool is currently **PDF-specific**, not a generic file merger. It scans the executable's folder for `.pdf` files only and uses Ghostscript's `pdfwrite` device to produce a valid, properly structured merged PDF — not a raw byte concatenation.
 
-- 🔀 User-defined merge order:
+## Table of Contents
 
-- 🔤 File name
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Configuration / Environment](#configuration--environment)
+- [Contributing](#contributing)
+- [License](#license)
 
-- 🕒 Last modification date
+## Features
 
-- 📏 File size
+- Automatically detects every regular `.pdf` file in the same folder as the executable
+- Two sort criteria, chosen interactively at runtime:
+  - **Alphabetical order** by file name — numeric file names (e.g. `1.pdf`, `2.pdf`, `10.pdf`) are compared as integers rather than lexicographically, so `2.pdf` correctly sorts before `10.pdf`
+  - **Last modification date**
+- Ascending or descending sort direction
+- Automatically skips a previously generated `merged_output.pdf` in the same folder, preventing it from being merged into itself on a second run
+- Minimal, dependency-free command-line interface (aside from the required Ghostscript installation)
+- Cross-platform: Windows, Linux, macOS
 
-- ↕️ Ascending or descending order selection
+## Tech Stack
 
-- 📄 `Merges` file contents into a single output file
+- **Language:** C++17
+- **Standard library:** `<filesystem>`, `<fstream>`, `<algorithm>`
+- **External dependency:** [Ghostscript](https://ghostscript.com/releases/gsdnld.html) — required at runtime, invoked via `std::system()` to perform the actual PDF merge (`gs` on Linux/macOS, `gswin64c` on Windows)
+- No external C++ libraries are required — only the standard library
 
-- 💻 Minimal, lightweight command-line interface
+## Getting Started
 
-- 🌍 Cross-platform (Windows, Linux, macOS)
+### Prerequisites
 
+- A C++17-compatible compiler: `g++`, `clang`, or MSVC
+- **Ghostscript** installed and available on your system `PATH` — the merge will fail at runtime without it. [Download here](https://ghostscript.com/releases/gsdnld.html)
 
----
+### Installation
 
+**1. Clone the repository**
 
-## ⚙️ Requirements
-
-- 🖥️ C++17 compatible compiler (g++, clang, or MSVC)
-
-- 📚 Uses only the C++17 standard library (<filesystem>, <fstream>, <algorithm>)
-
-- No external libraries are required.
-
-
----
-
-
-## 🛠️ Installation
-
-1. Clone the repository:
-
-```
+```bash
 git clone https://github.com/mirconegri/FileMerger.git
 cd FileMerger
 ```
 
-2. Ensure a C++17 compiler is installed on your system.
+**2. Build**
 
----
+- **Linux / macOS**
 
-## 🏗️ Build Instructions
-
-- ### Linux / macOS
-```
+```bash
 g++ -std=c++17 FileMerger.cpp -o FileMerger
 ```
-- ### Windows (MinGW)
-```
+
+- **Windows (MinGW)**
+
+```bash
 g++ -std=c++17 FileMerger.cpp -o FileMerger.exe
 ```
-- ### Windows (Visual Studio)
-```
+
+- **Windows (Visual Studio)**
+
+```bash
 cl /std:c++17 FileMerger.cpp
 ```
-The executable will be generated in the current directory. ⚡
 
----
+The executable will be generated in the current directory.
 
-## 🚀 Usage
+## Usage
 
-1. Place the executable in the folder containing the files you want to merge.
-
+1. Place the executable in the folder containing the PDF files you want to merge
 2. Run the program:
 
-`./FileMerger`
+```bash
+./FileMerger
+```
 
 3. Choose the merge order when prompted:
 
-- By file name  
-- By last modification date  
-- By file size
+```
+Choose merge order:
+1 - Alphabetical order (numeric names are sorted correctly too)
+2 - Last modification date
+Selection:
+```
 
 4. Choose the sort direction:
 
-- Ascending  
-- Descending
+```
+Choose sort direction:
+1 - Ascending
+2 - Descending
+Selection:
+```
 
-5. The merged result will be saved as: `merged_output.txt` in the same directory. ✅
+5. The merged result is saved as `merged_output.pdf` in the same directory.
+
+## Configuration / Environment
+
+This tool requires no environment variables or config files. Its only external requirement is having **Ghostscript accessible on the system `PATH`** — if the `gs` (or `gswin64c` on Windows) command isn't found, the merge step will fail with a non-zero exit code and the tool will print an error asking you to verify the Ghostscript installation.
+
+## Contributing
+
+Contributions are welcome! To propose a change:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes with a clear message
+4. Open a Pull Request
+
+Found a bug or have a feature idea (e.g. support for non-PDF formats, or a true generic-file merge mode)? Open an [Issue](https://github.com/mirconegri/FileMerger/issues).
+
+## License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -102,15 +135,35 @@ The executable will be generated in the current directory. ⚡
 
 **Mirco Negri** — *Computer Science Student @ UniTrento*
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-00599C?style=for-the-badge&logo=globe&logoColor=white)](https://mirconegri.github.io/Portfolio/)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mirconegri)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mirco-negri-263810225)
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mirconegri06@gmail.com)
-[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/mirco_negri_?igsh=MWtlbXY0a3R4NTJmNA==)
-[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/share/172rhaPCUK/)
+[
 
-### 📜 License
+![Portfolio](https://img.shields.io/badge/Portfolio-00599C?style=for-the-badge&logo=globe&logoColor=white)
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-<br>
+](https://mirconegri.github.io/Portfolio/)
+[
+
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+
+](https://github.com/mirconegri)
+[
+
+![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)
+
+](https://www.linkedin.com/in/mirco-negri-263810225)
+[
+
+![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)
+
+](mailto:mirconegri06@gmail.com)
+[
+
+![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)
+
+](https://www.instagram.com/mirco_negri_?igsh=MWtlbXY0a3R4NTJmNA==)
+[
+
+![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)
+
+](https://www.facebook.com/share/172rhaPCUK/)
+
 © 2026 Mirco Negri
