@@ -1,15 +1,7 @@
 # File Merger (PDF Edition)
 
-[
-
-![C++](https://img.shields.io/badge/Language-C%2B%2B17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-
-](https://isocpp.org/)
-[
-
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-
-](LICENSE)
+[![C++](https://img.shields.io/badge/Language-C%2B%2B17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)](https://isocpp.org/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 A command-line C++ tool that merges all PDF files found in its own folder into a single output PDF, with user-defined sort order (by name or by modification date) and direction (ascending or descending), powered by Ghostscript.
 
@@ -19,9 +11,10 @@ A command-line C++ tool that merges all PDF files found in its own folder into a
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-- [Configuration / Environment](#configuration--environment)
+- [Configuration and Environment](#configuration-and-environment)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -42,6 +35,17 @@ A command-line C++ tool that merges all PDF files found in its own folder into a
 - **Standard library:** `<filesystem>`, `<fstream>`, `<algorithm>`
 - **External dependency:** [Ghostscript](https://ghostscript.com/releases/gsdnld.html) — required at runtime, invoked via `std::system()` to perform the actual PDF merge (`gs` on Linux/macOS, `gswin64c` on Windows)
 - No external C++ libraries are required — only the standard library
+
+## Project Structure
+
+```
+FileMerger/
+├── PdfMerger.cpp   # Main source file — file discovery, sorting, Ghostscript invocation
+├── README.md
+└── LICENSE
+```
+
+> **Note:** the source file is named `PdfMerger.cpp`. Earlier versions of this README referenced a `FileMerger.cpp` build target that doesn't exist in the repository — the build commands below have been corrected to reference the actual file.
 
 ## Getting Started
 
@@ -64,19 +68,19 @@ cd FileMerger
 - **Linux / macOS**
 
 ```bash
-g++ -std=c++17 FileMerger.cpp -o FileMerger
+g++ -std=c++17 PdfMerger.cpp -o FileMerger
 ```
 
 - **Windows (MinGW)**
 
 ```bash
-g++ -std=c++17 FileMerger.cpp -o FileMerger.exe
+g++ -std=c++17 PdfMerger.cpp -o FileMerger.exe
 ```
 
 - **Windows (Visual Studio)**
 
 ```bash
-cl /std:c++17 FileMerger.cpp
+cl /std:c++17 PdfMerger.cpp
 ```
 
 The executable will be generated in the current directory.
@@ -110,7 +114,7 @@ Selection:
 
 5. The merged result is saved as `merged_output.pdf` in the same directory.
 
-## Configuration / Environment
+## Configuration and Environment
 
 This tool requires no environment variables or config files. Its only external requirement is having **Ghostscript accessible on the system `PATH`** — if the `gs` (or `gswin64c` on Windows) command isn't found, the merge step will fail with a non-zero exit code and the tool will print an error asking you to verify the Ghostscript installation.
 
@@ -125,45 +129,19 @@ Contributions are welcome! To propose a change:
 
 Found a bug or have a feature idea (e.g. support for non-PDF formats, or a true generic-file merge mode)? Open an [Issue](https://github.com/mirconegri/FileMerger/issues).
 
-## License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
 ### 👤 Author & Connect
 
 **Mirco Negri** — *Computer Science Student @ UniTrento*
 
-[
+[![Portfolio](https://img.shields.io/badge/Portfolio-00599C?style=for-the-badge&logo=globe&logoColor=white)](https://mirconegri.github.io/Portfolio/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mirconegri)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mirco-negri-263810225)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mirconegri06@gmail.com)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/mirco_negri_?igsh=MWtlbXY0a3R4NTJmNA==)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/share/172rhaPCUK/)
 
-![Portfolio](https://img.shields.io/badge/Portfolio-00599C?style=for-the-badge&logo=globe&logoColor=white)
+## License
 
-](https://mirconegri.github.io/Portfolio/)
-[
-
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-
-](https://github.com/mirconegri)
-[
-
-![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)
-
-](https://www.linkedin.com/in/mirco-negri-263810225)
-[
-
-![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)
-
-](mailto:mirconegri06@gmail.com)
-[
-
-![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)
-
-](https://www.instagram.com/mirco_negri_?igsh=MWtlbXY0a3R4NTJmNA==)
-[
-
-![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)
-
-](https://www.facebook.com/share/172rhaPCUK/)
-
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+<br>
 © 2026 Mirco Negri
