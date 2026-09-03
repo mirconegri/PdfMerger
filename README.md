@@ -3,6 +3,8 @@
 [![C++](https://img.shields.io/badge/Language-C%2B%2B17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)](https://isocpp.org/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
+> 🌐 **<a href="https://pdfmerger.mirconegri.com" target="_blank">Visit the project website</a>**
+
 A command-line C++ tool that merges all PDF files in its working directory into a single output file, with interactive sort order (by name or modification date) and direction (ascending or descending), powered by Ghostscript.
 
 Built to solve a recurring personal pain point: merging scanned lecture notes and university handouts distributed as separate per-topic PDFs, while preserving correct PDF structure — not just concatenating raw bytes.
